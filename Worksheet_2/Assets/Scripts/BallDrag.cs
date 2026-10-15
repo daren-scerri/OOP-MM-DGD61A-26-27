@@ -17,6 +17,7 @@ public class BallDrag : MonoBehaviour
 
     void OnMouseDrag()
     {
+        Debug.Log("Dragging");
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0f,0f,10f);
         this.gameObject.transform.position = mousePos;
     }
