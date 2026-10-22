@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     GameObject bob, alice; // declare bob and alice
     int playerHP = 10;
-    int playerDamage = 3; //This is our damage power
+    int playerDamage = 2; //This is our damage power
     Enemy _bob_instance, _alice_instance;
 
     void Start()
