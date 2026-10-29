@@ -5,6 +5,9 @@ using UnityEngine;
 /// <summary>
 /// A ball
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
+
+
 public class Ball : MonoBehaviour
 {
     protected Vector2 impulseVector = new Vector2(-5, 0);
@@ -26,4 +29,11 @@ public class Ball : MonoBehaviour
     {
         print("I'm a white ball");
     }
+
+    virtual protected void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
+
+
 }
