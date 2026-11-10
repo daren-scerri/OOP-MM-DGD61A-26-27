@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxCannonAngle: 60
+  slerp_speed: 2
 --- !u!70 &255983663
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
