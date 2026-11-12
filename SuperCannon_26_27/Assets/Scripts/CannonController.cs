@@ -7,6 +7,11 @@ public class CannonController : MonoBehaviour
     [SerializeField] float maxCannonAngle = 60f;
     [SerializeField] float slerp_speed=2;
 
+    [SerializeField] GameObject bullet1Prefab;
+    [SerializeField] GameObject bullet2Prefab;
+
+    [SerializeField] Transform cannonTip;
+
     Quaternion minAngle, maxAngle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,9 +21,10 @@ public class CannonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         PointAtMouse();
+        Fire();
     }
 
     private void PointAtMouse()
@@ -34,6 +40,23 @@ public class CannonController : MonoBehaviour
         newrotation.w = Mathf.Clamp(newrotation.w, minAngle.w, maxAngle.w);
         // this.transform.rotation = newrotation;  //NO SLERP
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, newrotation, Time.deltaTime * slerp_speed);
+    }
+
+    private void Fire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject newBullet1 = Instantiate(bullet1Prefab,cannonTip.position,Quaternion.identity);
+            newBullet1.transform.position = cannonTip.position;
+            newBullet1.transform.rotation = cannonTip.rotation;
+        }
+
+         if (Input.GetMouseButtonDown(1))
+        {
+            GameObject newBullet2 = Instantiate(bullet2Prefab,cannonTip.position,Quaternion.identity);
+            newBullet2.transform.position = cannonTip.position;
+            newBullet2.transform.rotation = cannonTip.rotation;
+        }
 
     }
 

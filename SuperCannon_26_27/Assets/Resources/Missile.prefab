@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8894031777834877493}
+  - component: {fileID: 5464240433031240689}
   - component: {fileID: 761704353192351021}
   - component: {fileID: 5118691017807773538}
   - component: {fileID: 5553739969060594401}
@@ -34,6 +35,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5464240433031240689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492585718854444890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ebbec21b4204b4bb0ec61b9d90b7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Missile
+  speed: 20
 --- !u!212 &761704353192351021
 SpriteRenderer:
   serializedVersion: 2
