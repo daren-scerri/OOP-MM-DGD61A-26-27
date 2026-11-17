@@ -231,6 +231,8 @@ MonoBehaviour:
   bullet1Prefab: {fileID: 7997393239527257731, guid: 85478f67b4255b24e84acf21cee38f54, type: 3}
   bullet2Prefab: {fileID: 6492585718854444890, guid: 416b2bd9617731d459d92dba164e22ea, type: 3}
   cannonTip: {fileID: 1748475574}
+  bullet1_firingRate: 1
+  bullet2_firingRate: 0.5
 --- !u!70 &255983663
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,12 @@ public class CannonController : MonoBehaviour
 
     [SerializeField] Transform cannonTip;
 
+    [SerializeField] float bullet1_firingRate = 1f; 
+    [SerializeField] float bullet2_firingRate = 1f;
+
     Quaternion minAngle, maxAngle;
+
+    Coroutine fireCoroutine1, fireCoroutine2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,21 +47,43 @@ public class CannonController : MonoBehaviour
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, newrotation, Time.deltaTime * slerp_speed);
     }
 
+
+    IEnumerator FireContinuously(GameObject bulletprefab, float _firingRate)
+    {
+        while (true)
+        {
+        GameObject newBullet1 = Instantiate(bulletprefab,cannonTip.position,Quaternion.identity);
+        newBullet1.transform.position = cannonTip.position;
+        newBullet1.transform.rotation = cannonTip.rotation;
+        yield return new WaitForSeconds(_firingRate);
+        }
+    }
+
+
     private void Fire()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject newBullet1 = Instantiate(bullet1Prefab,cannonTip.position,Quaternion.identity);
-            newBullet1.transform.position = cannonTip.position;
-            newBullet1.transform.rotation = cannonTip.rotation;
+            fireCoroutine1 = StartCoroutine(FireContinuously(bullet1Prefab, bullet1_firingRate));
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (fireCoroutine1 != null) StopCoroutine(fireCoroutine1);
+            fireCoroutine1 = null;
         }
 
          if (Input.GetMouseButtonDown(1))
         {
-            GameObject newBullet2 = Instantiate(bullet2Prefab,cannonTip.position,Quaternion.identity);
-            newBullet2.transform.position = cannonTip.position;
-            newBullet2.transform.rotation = cannonTip.rotation;
+            fireCoroutine2 = StartCoroutine(FireContinuously(bullet2Prefab, bullet2_firingRate));
         }
+
+          if (Input.GetMouseButtonUp(1))
+        {
+            if (fireCoroutine2 != null) StopCoroutine(fireCoroutine2);
+            fireCoroutine2 = null;
+        }
+
 
     }
 
