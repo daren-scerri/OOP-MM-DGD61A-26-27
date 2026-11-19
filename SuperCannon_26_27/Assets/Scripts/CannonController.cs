@@ -50,13 +50,15 @@ public class CannonController : MonoBehaviour
     }
 
 
-    IEnumerator FireContinuously(GameObject bulletprefab, float _firingRate)
+    IEnumerator FireContinuously(ObjectPooling bulletPool, float _firingRate)
     {
         while (true)
         {
-        GameObject newBullet1 = Instantiate(bulletprefab,cannonTip.position,Quaternion.identity);
+        GameObject newBullet1 = bulletPool.GetPoolObject();
+        //GameObject newBullet1 = Instantiate(bulletprefab,cannonTip.position,Quaternion.identity);
         newBullet1.transform.position = cannonTip.position;
         newBullet1.transform.rotation = cannonTip.rotation;
+        newBullet1.SetActive(true);
         yield return new WaitForSeconds(_firingRate);
         }
     }
@@ -66,7 +68,7 @@ public class CannonController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            fireCoroutine1 = StartCoroutine(FireContinuously(bullet1Prefab, bullet1_firingRate));
+            fireCoroutine1 = StartCoroutine(FireContinuously(cannonBallPool, bullet1_firingRate));
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -77,7 +79,7 @@ public class CannonController : MonoBehaviour
 
          if (Input.GetMouseButtonDown(1))
         {
-            fireCoroutine2 = StartCoroutine(FireContinuously(bullet2Prefab, bullet2_firingRate));
+            fireCoroutine2 = StartCoroutine(FireContinuously(missilePool, bullet2_firingRate));
         }
 
           if (Input.GetMouseButtonUp(1))

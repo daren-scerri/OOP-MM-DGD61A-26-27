@@ -12,7 +12,7 @@ public class DefaultBullet : MonoBehaviour
         rb.gravityScale = 0;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
         rb.linearVelocity = transform.up * speed;
     }
@@ -24,7 +24,8 @@ public class DefaultBullet : MonoBehaviour
     }
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+       // Destroy(this.gameObject);   change to object pool set inactive
+       this.gameObject.SetActive(false);
     }
 
 
