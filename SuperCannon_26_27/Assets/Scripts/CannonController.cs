@@ -10,6 +10,8 @@ public class CannonController : MonoBehaviour
     [SerializeField] GameObject bullet1Prefab;
     [SerializeField] GameObject bullet2Prefab;
 
+    [SerializeField] ObjectPooling cannonBallPool, missilePool;
+
     [SerializeField] Transform cannonTip;
 
     [SerializeField] float bullet1_firingRate = 1f; 
