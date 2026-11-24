@@ -36,9 +36,9 @@ public class CannonController : MonoBehaviour
 
     private void PointAtMouse()
     {
-        Camera myCamera = Camera.main;
-        Vector3 mousePos = myCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0f,0f,10f);
-        Vector3 relativePos = this.transform.position - mousePos;
+        //Camera myCamera = Camera.main;
+        //Vector3 mousePos = myCamera.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0f,0f,10f);
+        Vector3 relativePos = this.transform.position - GameData.MousePos;  
         Quaternion newrotation = Quaternion.LookRotation(relativePos, Vector3.forward);
         //Debug.Log(newrotation);
         newrotation.x =0;
